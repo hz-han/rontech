@@ -1,0 +1,20 @@
+@(msgs: List[Work], msgForm: Form[(String, String, String)])
+
+@* 导入 helper 包下的类和对象，因为需要其中的form来生成表单 *@
+@import helper._
+
+@* 调用main.scala.html模板，并将标题改为"留言板" *@
+@main("Rontech勤务系统信息") {
+
+   <h2 align=center>勤务登记</h2>
+   @* 创建表单，告知表单提交时发送POST给routes.Application.postMsg来处理 *@
+   @form(routes.Application.work){
+    <table  width="350" bgcolor="#ccffcc" style="border-color" border="1" align=center>
+         <tr align=center><td>用户名</td><td><input type="text" name="username"  id="username" value ="@msgs(0).username" disabled="disabled"></td> </tr>		   			
+         <tr align=center><td>出勤时间</td><td><input type="text" name="workStart" id="workStart"></td></tr>
+         <tr align=center><td>退勤时间</td><td><input type="text" name="workEnd" id="workEnd"></td></tr>
+         <tr align=center><td colspan="2"><input type="submit" value="勤务时间登记" > 
+         <input type="reset" value="重 置"/><a href = "/person"><input type="button" value="个人信息查看" ></a> <a href = "/loginPage"><input type="button" value="退出" ></a> </td></tr>                              
+    </table>  
+   }
+}

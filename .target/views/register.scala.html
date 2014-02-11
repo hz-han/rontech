@@ -1,0 +1,27 @@
+@(msgs: List[User], msgForm: Form[(String, String, String, String)])
+@*
+模板入参:
+第一个名为msgs的List[Message]类型参数;
+第二个名为msgForm的Form[(String, String)]类型参数
+*@
+
+@* 导入 helper 包下的类和对象，因为需要其中的form来生成表单 *@
+@import helper._
+
+@* 调用main.scala.html模板，并将标题改为"留言板" *@
+@main("Rontech勤务系统注册") {
+
+   <h2 align=center>Rontech勤务系统注册</h2>
+   @* 创建表单，告知表单提交时发送POST给routes.Application.postMsg来处理 *@
+   @form(routes.Application.register){
+   	    <table  width="350" bgcolor="#ccffcc" style="border-color" border="1" align=center>
+         <tr align=center> <td>用户名</td><td><input type="text" name="username"  id="username"></td> </tr>		   			
+         <tr align=center><td>密 码</td><td><input type="password" name="password" id="password"></td></tr>
+         <tr align=center><td>确认密码</td><td><input type="password" name="passwordAgain" id="passwordAgain"></td></tr>
+         <tr align=center><td>邮箱</td><td><input type="text" name="mail" id="mail"></td></tr>
+         <tr align=center><td colspan="2"><input type="submit" value="注册" >    
+         <input type="reset" value="重 置"/><a href = "/loginPage"><input type="button" value="返回" ></a> </td></tr>                              
+    </table>  
+   }
+
+}
